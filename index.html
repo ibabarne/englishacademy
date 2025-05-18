@@ -1192,49 +1192,73 @@ footer {
         <span>Contactez-nous</span>
     </a>
 
-    <script>
-        // Gestion du menu mobile
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li');
+    <script>// Gestion du menu mobile
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+const navLinks = document.querySelectorAll('.nav-links li');
 
-        burger.addEventListener('click', () => {
-            // Toggle Navigation
-            nav.classList.toggle('nav-active');
-            
-            // Animate Links
-            navLinks.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7
+burger.addEventListener('click', () => {
+    // Toggle Navigation
+    nav.classList.toggle('nav-active');
+    
+    // Animate Links
+    navLinks.forEach((link, index) => {
+        if (link.style.animation) {
+            link.style.animation = '';
+        } else {
+            link.style.animation = navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s;
+        }
+    });
+    
+    // Burger Animation
+    burger.classList.toggle('toggle');
+});
 
+// Smooth scrolling pour les liens d'ancrage
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
 
-On Sun, May 18, 2025 at 4:28 PM salah eddine dik <diksalaheddine@gmail.com> wrote:
-    <!-- Galerie Section -->
-    <section id="galerie" class="gallery">
-        <h2>Notre Galerie</h2>
-        <div class="gallery-container">
-            <div class="gallery-item">
-                <img src="https://english-academy-tau.vercel.app/images/7515510.jpg" alt="Cours d'anglais">
-                <div class="gallery-overlay">
-                    <h3>Cours d'anglais</h3>
-                    <p>Apprentissage interactif</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://english-academy-tau.vercel.app/images/classroom.jpg" alt="Environnement d'étude">
-                <div class="gallery-overlay">
-                    <h3>Environnement d'étude</h3>
-                    <p>Cadre moderne et confortable</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://english-academy-tau.vercel.app/images/18166.jpg" alt="Méthode d'apprentissage">
-                <div class="gallery-overlay">
-                    <h3>Méthode d'apprentissage</h3>
-                    <p>Techniques innovantes</p>
-                </div>
-            </div>
-        </div>
-    </section>
+// Animation au scroll
+const observerOptions = {
+    threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        }
+    });
+}, observerOptions);
+
+// Observer les sections pour l'animation
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});
+
+// Gestion du formulaire de contact
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Récupération des données du formulaire
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        // Simulation d'envoi (à remplacer par votre logique d'envoi réelle)
+        console.log('Données du formulaire:', data);
+        
+        // Réinitialisation du formulaire
+        contactForm.reset();
+        
+        // Message de confirmation
+        alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+    });
+}</script>
