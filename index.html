@@ -115,7 +115,7 @@ body {
     color: var(--white);
     position: relative;
     overflow: hidden;
-    padding: 2rem;
+    padding: 4rem 2rem; /* Increased padding */
 }
 
 .hero::before {
@@ -143,11 +143,12 @@ body {
 
 .hero-content {
     max-width: 1200px;
-    padding: 2rem;
+    padding: 3rem; /* Increased padding */
     position: relative;
     z-index: 1;
     animation: fadeInUp 1s ease;
     width: 100%;
+    margin-top: 2rem; /* Added margin-top */
 }
 
 .hero-content h1 {
@@ -832,10 +833,16 @@ footer {
     }
     
     .hero {
-        padding: 1rem;
+        padding: 2rem 1rem; /* Adjusted for mobile */
         height: auto;
         min-height: calc(100vh - 80px);
     }
+    
+    .hero-content {
+        padding: 2rem 1rem; /* Adjusted for mobile */
+        margin-top: 1rem; /* Adjusted for mobile */
+    }
+    
     .hero-features {
         gap: 1rem;
         margin: 2rem 0;
@@ -973,6 +980,100 @@ footer {
 
     .whatsapp-button span {
         display: none;
+    }
+}
+
+.expanded-article {
+    grid-column: 1 / -1;
+    padding: 2.5rem;
+}
+    
+.article-content {
+    line-height: 1.8;
+}
+    
+.article-content img {
+    max-height: 400px;
+    object-fit: cover;
+    box-shadow: var(--box-shadow);
+}
+    
+.article-content h4 {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+    
+.article-content h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+}
+    
+.article-content ul, .article-content ol {
+    margin: 1.5rem 0 1.5rem 2rem;
+    list-style-type: none;
+}
+    
+.article-content ul li, .article-content ol li {
+    margin: 0.8rem 0;
+    position: relative;
+    padding-left: 1.8rem;
+}
+    
+.article-content ul li::before {
+    content: "•";
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+    
+.article-content blockquote {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    background: rgba(52, 152, 219, 0.05);
+    border-left: 4px solid var(--secondary-color);
+    font-style: italic;
+}
+    
+.article-content blockquote cite {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: normal;
+    font-weight: bold;
+}
+    
+.success-story {
+    background: var(--light-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+    
+.success-story h5 {
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+    
+.article-content .conclusion {
+    font-style: italic;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(52, 152, 219, 0.05);
+    border-left: 4px solid var(--secondary-color);
+}
+    
+@media (max-width: 768px) {
+    .expanded-article {
+        padding: 1.5rem;
     }
 }
 </style>
@@ -1198,101 +1299,6 @@ footer {
     </div>
 </section>
 
-<style>
-    .expanded-article {
-        grid-column: 1 / -1;
-        padding: 2.5rem;
-    }
-    
-    .article-content {
-        line-height: 1.8;
-    }
-    
-    .article-content img {
-        max-height: 400px;
-        object-fit: cover;
-        box-shadow: var(--box-shadow);
-    }
-    
-    .article-content h4 {
-        font-size: 1.4rem;
-        margin: 2rem 0 1rem;
-        color: var(--primary-color);
-        position: relative;
-        padding-bottom: 0.5rem;
-    }
-    
-    .article-content h4::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 3px;
-        background: var(--gradient-primary);
-    }
-    
-    .article-content ul, .article-content ol {
-        margin: 1.5rem 0 1.5rem 2rem;
-        list-style-type: none;
-    }
-    
-    .article-content ul li, .article-content ol li {
-        margin: 0.8rem 0;
-        position: relative;
-        padding-left: 1.8rem;
-    }
-    
-    .article-content ul li::before {
-        content: "•";
-        color: var(--secondary-color);
-        position: absolute;
-        left: 0;
-        font-size: 1.5rem;
-        line-height: 1;
-    }
-    
-    .article-content blockquote {
-        margin: 1.5rem 0;
-        padding: 1.5rem;
-        background: rgba(52, 152, 219, 0.05);
-        border-left: 4px solid var(--secondary-color);
-        font-style: italic;
-    }
-    
-    .article-content blockquote cite {
-        display: block;
-        margin-top: 0.5rem;
-        font-style: normal;
-        font-weight: bold;
-    }
-    
-    .success-story {
-        background: var(--light-bg);
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin: 1rem 0;
-    }
-    
-    .success-story h5 {
-        color: var(--accent-color);
-        margin-bottom: 0.5rem;
-    }
-    
-    .article-content .conclusion {
-        font-style: italic;
-        margin-top: 2rem;
-        padding: 1rem;
-        background: rgba(52, 152, 219, 0.05);
-        border-left: 4px solid var(--secondary-color);
-    }
-    
-    @media (max-width: 768px) {
-        .expanded-article {
-            padding: 1.5rem;
-        }
-    }
-</style>
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>Contactez-nous</h2>
