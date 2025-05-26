@@ -1122,7 +1122,99 @@ footer {
             <a href="#contact" class="cta-button">Commencer Votre Voyage</a>
         </div>
     </section>
+<section class="video-presentation">
+  <div class="custom-video-container" onclick="loadVideo(this)">
+    <img 
+      src="https://img.youtube.com/vi/I0eVKtkVPc8/maxresdefault.jpg" 
+      alt="Découvrez notre univers" 
+      class="custom-video-thumbnail"
+    >
+    <div class="custom-play-button"></div>
+    <div class="video-caption">
+      <h3>Votre voyage commence ici</h3>
+      <p>Regardez notre guide vidéo exclusif</p>
+    </div>
+    <iframe 
+      data-src="https://www.youtube.com/embed/I0eVKtkVPc8?autoplay=1" 
+      frameborder="0" 
+      allowfullscreen
+    ></iframe>
+  </div>
+</section>
 
+<style>
+  /* Video Section Styling */
+  .video-presentation {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    text-align: center;
+  }
+  
+  .custom-video-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transform: scale(0.98);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .custom-video-container:hover {
+    transform: scale(1);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+  }
+  
+  .video-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .video-caption h3 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+  
+  /* Keep the rest of the CSS from previous example */
+</style>
+
+<script>
+  // Enhanced video loader with smooth transition
+  function loadVideo(container) {
+    const iframe = container.querySelector('iframe');
+    const thumbnail = container.querySelector('.custom-video-thumbnail');
+    const playButton = container.querySelector('.custom-play-button');
+    const caption = container.querySelector('.video-caption');
+    
+    // Add loading animation
+    container.style.pointerEvents = 'none';
+    container.style.opacity = '0.8';
+    
+    // Load video after slight delay for smoother UX
+    setTimeout(() => {
+      iframe.src = iframe.getAttribute('data-src');
+      iframe.style.display = 'block';
+      thumbnail.style.opacity = '0';
+      playButton.style.opacity = '0';
+      caption.style.opacity = '0';
+      
+      // Remove elements after transition
+      setTimeout(() => {
+        thumbnail.style.display = 'none';
+        playButton.style.display = 'none';
+        caption.style.display = 'none';
+        container.style.opacity = '1';
+      }, 300);
+    }, 150);
+  }
+</script>
     <!-- À propos Section -->
     <section id="apropos" class="about">
         <h2>À propos de nous</h2>
